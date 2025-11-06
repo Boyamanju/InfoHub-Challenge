@@ -1,0 +1,112 @@
+:root{
+  --bg1:#060915; --bg2:#0b0f1f; --bg3:#0d1226;
+  --glass:rgba(255,255,255,.04);
+  --muted:#a9b4c8;
+  --accent:#8b5cf6;   /* violet */
+  --accent2:#06b6d4;  /* teal */
+  --ok:#10b981; --warn:#f59e0b; --bad:#ef4444;
+}
+
+*{ box-sizing:border-box; }
+body{
+  margin:0;
+  font-family:"Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color:#e9eef8;
+  background:
+    radial-gradient(1000px 600px at 10% -10%, rgba(139,92,246,.18), transparent 60%),
+    radial-gradient(900px 700px at 90% 0%, rgba(6,182,212,.16), transparent 60%),
+    linear-gradient(180deg, var(--bg1), var(--bg2) 50%, var(--bg3));
+  min-height:100vh;
+  padding:28px;
+}
+
+.container{ max-width:1200px; margin:0 auto; }
+
+.header{
+  display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:18px;
+}
+.brand{
+  display:flex; align-items:center; gap:12px;
+}
+.logo{
+  width:40px; height:40px; border-radius:12px;
+  background: conic-gradient(from 120deg, var(--accent), var(--accent2), var(--accent));
+  box-shadow: 0 8px 30px rgba(0,0,0,.35);
+}
+.title{ font-size:28px; font-weight:800; letter-spacing:-.4px; margin:0; }
+.subtitle{ margin:4px 0 0 0; color:var(--muted); font-size:13px; }
+
+.modules-grid{ display:grid; gap:18px; grid-template-columns:repeat(3, 1fr); }
+@media (max-width:980px){ .modules-grid{ grid-template-columns:repeat(2, 1fr); } }
+@media (max-width:640px){ .modules-grid{ grid-template-columns:1fr; } }
+
+.module{
+  background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+  border:1px solid rgba(255,255,255,.06);
+  border-radius:16px; padding:16px; backdrop-filter: blur(6px);
+  box-shadow: 0 10px 40px rgba(0,0,0,.35);
+}
+
+.module-head{ display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:10px; }
+.module-title{ display:flex; align-items:center; gap:10px; }
+.badge{
+  padding:6px 10px; border-radius:999px; background:rgba(255,255,255,.06); color:#dbe6ff; font-size:12px;
+}
+
+.module-body{ min-height:120px; }
+
+.input, .select{
+  padding:10px 12px; border-radius:10px; border:1px solid rgba(255,255,255,.08); background:rgba(0,0,0,.15);
+  color:#e9eef8; outline:none;
+}
+.btn{
+  padding:10px 14px; border-radius:12px; border:none; color:#fff; cursor:pointer;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  box-shadow: 0 8px 20px rgba(139,92,246,.25);
+  transition: transform .12s, box-shadow .12s;
+}
+.btn:hover{ transform: translateY(-2px); box-shadow: 0 12px 30px rgba(139,92,246,.32); }
+.btn:active{ transform: translateY(0); }
+
+.row{ display:flex; gap:10px; align-items:center; margin-bottom:12px; flex-wrap:wrap; }
+.small{ font-size:13px; color:var(--muted); }
+.center{ text-align:center; }
+
+.convert-value{ font-size:20px; font-weight:800; margin-top:4px; letter-spacing:.2px; }
+
+/* Weather canvas + icon */
+.weather-title{
+  display:flex; align-items:center; gap:10px;
+}
+.flag{
+  font-size:20px; filter: drop-shadow(0 2px 6px rgba(0,0,0,.25));
+}
+.weather-icon{
+  width:36px; height:36px; border-radius:10px; display:flex; align-items:center; justify-content:center;
+  background: rgba(255,255,255,.06);
+}
+
+/* dropdown panel */
+.dropdown{
+  position:relative;
+}
+.dropdown-panel{
+  position:absolute; z-index:40; left:0; right:0; margin-top:6px;
+  background: rgba(6, 8, 18, .98);            /* darker */
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:12px; padding:10px;
+  box-shadow: 0 18px 48px rgba(0,0,0,.6);
+}
+
+.dropdown-item{
+  display:flex; align-items:center; gap:10px; padding:8px 6px; border-radius:8px; cursor:pointer;
+}
+.dropdown-item[aria-selected="true"]{ background: rgba(139,92,246,.16); }
+.dropdown-item[aria-current="true"]{ outline: 1px dashed rgba(255,255,255,.25); }
+
+/* loader */
+.loader{
+  width:22px; height:22px; border-radius:50%; border:3px solid rgba(255,255,255,.12); border-top-color: var(--accent);
+  animation: spin 1s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
